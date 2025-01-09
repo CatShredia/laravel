@@ -9,9 +9,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::All();
+        $posts = Post::All();
 
-        dump($post);
+        dump($posts);
+
+        return view('posts', compact('posts'));
     }
 
     public function create()
@@ -76,5 +78,45 @@ class PostController extends Controller
 
 
         dd('delete all posts');
+    }
+
+    public function firstOrCreate()
+    {
+
+        for ($i = 1; $i < 6; $i++) {
+            $post = Post::withTrashed()->find($i);
+
+            $post->restore();
+        }
+
+        $post = Post::firstOrCreate(['title' => 'name'], [
+            'title' => 'name',
+            'content' => 'namemeeee',
+            'image_url' => 'bgr',
+            'likes' => 604,
+            'isPublished' => 0
+        ]);
+
+        dump('first or create');
+    }
+
+    public function updateOrCreate()
+    {
+
+        for ($i = 1; $i < 6; $i++) {
+            $post = Post::withTrashed()->find($i);
+
+            $post->restore();
+        }
+
+        $post = Post::updateOrCreate(['title' => 'name'], [
+            'title' => 'nam4e',
+            'content' => 'namemeeee',
+            'image_url' => 'bgr',
+            'likes' => 6452304,
+            'isPublished' => 0
+        ]);
+
+        dump('update or create');
     }
 }
