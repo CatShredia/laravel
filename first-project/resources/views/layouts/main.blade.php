@@ -57,13 +57,17 @@
     </main>
     <footer class="footer">
         <div class="container">
-            <div class="row">Конец Страницы</div>
+            <div class="row">
+                <div class="col">
+                    <p class="footer-text">
+                        Hello World!</p>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Y9n2J/22F8jXb5cE20vWJqI9H29J1I20f03q8s02v08Q1e7i9j+W9qH0k2b+vX"
-        crossorigin="anonymous"></script>
+        integrity="sha384-Y9n2J/22F8jXb5cE20vWJqI9H29J1I20f03q8s02v08Q1e7i9j+W9qH0k2b+vX" crossorigin="anonymous"></script>
 
 </body>
 

@@ -11,43 +11,63 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('posts', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     public function create()
     {
-        $posts_arr = [
-            [
-                'title' => 'title of post 1',
-                'content' => 'content of post 1',
-                'image_url' => 'test.png',
-                'likes' => 20,
-                'isPublished' => 0
-            ],
-            [
-                'title' => 'title of post 2',
-                'content' => 'content of post 2',
-                'image_url' => 'tes2t.png',
-                'likes' => 30,
-                'isPublished' => 1
-            ]
-        ];
-        Post::create([
-            'title' => 'title of post 2',
-            'content' => 'content of post 2',
-            'image_url' => 'tes2t.png',
-            'likes' => 30,
-            'isPublished' => 1
+        return view('posts.create');
+    }
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+    public function update(Post $post)
+    {
+        $data = request()->validate([
+            // это строчка нужна для проверки ключей, которые должны совпадать с name в форме и колонками в таблицы sql
+            'title' => 'string',
+            'content' => 'string',
+            'likes' => 'integer',
+
         ]);
 
-        foreach ($posts_arr as $post) {
-            Post::create($post);
-        }
+        $post->update($data);
 
-        dd('created');
+        return redirect()->route('post.show', $post);
     }
 
-    public function update()
+    public function store()
+    {
+        $data = request()->validate([
+            // это строчка нужна для проверки ключей, которые должны совпадать с name в форме и колонками в таблицы sql
+            'title' => 'string',
+            'content' => 'string',
+            'likes' => 'integer',
+
+        ]);
+        // создаем новый объект в БД, который по ключам заполняем данными от пользователя
+        Post::create($data);
+
+        // возвращаемся на страницу с постами через название роута
+        return redirect()->route('post.index');
+    }
+
+    // $id указывается, когда в запросе есть например posts/{post},
+    // где $id = тому, что пользователь напишет в строке браузера
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('post.index');
+    }
+
+    public function updateOld()
     {
         $post = Post::find(1);
 

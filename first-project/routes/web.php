@@ -8,18 +8,32 @@ use App\Http\Controllers\AboutController;
 
 
 
-
+// получаем начальную страницу
 Route::get('/', [StartPageController::class, 'index'])->name('start.index');
 
-Route::get('/posts', [PostController::class, 'index'])->name('post.index');
-
+// получаем страницу про компанию
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
+// получаем страницу с постами
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 
 
-Route::get('/create', [PostController::class, 'create']);
+// страница с формами, где происходит заполнение данных пользователем
+Route::get('/create', [PostController::class, 'create'])->name('create.create');
+// при нажатии на кнопку с типом submit происходит обращение именно к этому запросу
+Route::post('/posts', [PostController::class, 'store'])->name('post.store');
 
-Route::get('/update', [PostController::class, 'update']);
+// получаем страницу с ОДНИМ постом
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('post.show');
+// получаем страницу изменения ОДНОГО поста
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+Route::patch('/posts/{post}', [PostController::class, 'update'])->name('post.update');
+
+// удаление поста
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('post.delete');
+
+
+Route::get('/updateOld', [PostController::class, 'updateOld']);
 
 Route::get('/deleteAll', [PostController::class, 'deleteAll']);
 
