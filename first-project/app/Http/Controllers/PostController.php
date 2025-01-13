@@ -91,9 +91,6 @@ class PostController extends Controller
             $post->delete();
         }
 
-        $post = Post::withTrashed()->find(1);
-        $post->restore();
-
 
         dd('delete all posts');
     }
