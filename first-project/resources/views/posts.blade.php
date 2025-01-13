@@ -1,7 +1,11 @@
 @extends('layouts.default')
 @section('content')
-    @foreach ($posts as $post)
+<div class="container">
+    <div class="row">@foreach ($posts as $post)
         {{ $post->title }}
         <br>
     @endforeach
+    </div>
+</div>
+
 @endsection
