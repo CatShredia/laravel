@@ -20,9 +20,7 @@ class DevController extends Controller
 
         dump($post->tags);
 
-        $post = All()
-            ->where('post_id', '=', 4)
-            ->get();
+        $post = Post::where('id', 1)->get();
 
         dump($post);
     }

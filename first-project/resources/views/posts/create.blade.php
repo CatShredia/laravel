@@ -29,6 +29,12 @@
                         <option value="{{$category->id}}">{{$category->title}}</option>
                     @endforeach
                 </select>
+                <select name="tag_ids[]" class="form-select" size="3" multiple aria-label="Multiple select example"
+                    style="margin-bottom:10px">
+                    @foreach ($tags as $tag)
+                        <option value="{{$tag->id}}">{{$tag->title}}</option>
+                    @endforeach
+                </select>
                 <button type="submit" class="btn btn-dark">OK</button>
             </form>
 

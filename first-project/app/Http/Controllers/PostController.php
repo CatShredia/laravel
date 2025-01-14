@@ -19,8 +19,9 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::All();
+        $tags = Tag::All();
 
-        return view('posts.create', compact('categories'));
+        return view('posts.create', compact('categories', 'tags'));
     }
     public function edit(Post $post)
     {
@@ -56,13 +57,21 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'likes' => 'integer',
-            'category_id' => 'integer'
+            'category_id' => 'integer',
+            'tag_ids' => 'required|array',
+            'tag_ids.*' => 'integer'
         ]);
+
+        $tags = $data['tag_ids'];
+        unset($data['tag_ids']);
+
+        dump($data);
+        dump($tags);
         // создаем новый объект в БД, который по ключам заполняем данными от пользователя
-        Post::create($data);
+        // Post::create($data);
 
         // возвращаемся на страницу с постами через название роута
-        return redirect()->route('post.index');
+        // return redirect()->route('post.index');
     }
 
     // $id указывается, когда в запросе есть например posts/{post},
