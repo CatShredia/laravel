@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -24,8 +25,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::All();
+        $tags = Tag::All();
 
-        return view('posts.edit', compact('post', 'categories'));
+        return view('posts.edit', compact('post', 'categories', 'tags'));
     }
     public function update(Post $post)
     {
@@ -67,9 +69,7 @@ class PostController extends Controller
     // где $id = тому, что пользователь напишет в строке браузера
     public function show(Post $post)
     {
-        $category = Category::find($post->category_id);
-
-        return view('posts.show', compact('post', 'category'));
+        return view('posts.show', compact('post'));
     }
 
     public function destroy(Post $post)

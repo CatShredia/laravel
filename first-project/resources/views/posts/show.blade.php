@@ -7,7 +7,7 @@
     <div class="row">
         <p class="show-title">{{ $post->content }}</p>
         <p class="show-title">{{ $post->likes }}</p>
-        <p class="show-category">Category: <b>{{ $category->title }}</b></p>
+        <p class="show-category">Category: <b>{{ $post->category->title }}</b></p>
 
         <a href="{{ route('post.edit', $post->id) }}" class="edit btn btn-dark" style="margin-bottom: 10px">Edit
             post</a>

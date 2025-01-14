@@ -25,6 +25,8 @@
                     <input name="likes" type="number" class="form-control" id="titleInput" placeholder="Likes"
                         value="{{ $post->likes }}">
                 </div>
+                <!-- TODO: category -->
+                <label for="titleInput" class="form-label">Category</label>
                 <select required name="category_id" class="form-select" aria-label="Default select example"
                     style="margin-bottom:10px">
                     <option selected>{{ $categories->find($post->category_id)->title }}</option>
@@ -33,6 +35,14 @@
                             <option value="{{$category->id}}">{{$category->title}}</option>
                         @endif
                     @endforeach
+                </select>
+                <!-- TODO: tags -->
+                <label for="titleInput" class="form-label">Tags</label>
+                <select class="form-select" size="3" aria-label="Size 3 select example" style="margin-bottom:10px">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
                 </select>
                 <button type="submit" class="btn btn-dark">OK</button>
             </form>

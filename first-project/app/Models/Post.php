@@ -16,4 +16,15 @@ class Post extends Model
     protected $guarded = [];
     // для того, чтобы свободно добавлять элементы, указанные в атрибуте
     // protected $fullable = [];
+
+    // one to one
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
+    }
 }
