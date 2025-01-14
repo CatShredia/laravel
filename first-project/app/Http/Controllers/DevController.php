@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Post;
 
-class StartPageController extends Controller
+class DevController extends Controller
 {
     public function index()
     {
-        return view('start');
+        $category = Post::find(8);
+
+        dd($category);
     }
 }

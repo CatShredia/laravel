@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DevController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
@@ -40,4 +41,6 @@ Route::get('/deleteAll', [PostController::class, 'deleteAll']);
 Route::get('/first_or_create', [PostController::class, 'firstOrCreate']);
 
 Route::get('/update_or_create', [PostController::class, 'updateOrCreate']);
+
+Route::get('/dev', [DevController::class, 'index'])->name('dev.index');
 

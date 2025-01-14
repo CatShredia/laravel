@@ -25,6 +25,19 @@ return new class extends Migration {
 
             $table->softDeletes(); // для мягкого удаления
 
+
+            // создаем колонку в таблице для id категории (с ней бцдет происходит основная работа)
+            $table->unsignedBigInteger('category_id')->nullable();
+
+            // создаем индекс, по которому происходит связывание таблиц
+            $table->index('category_id', 'post_category_index');
+
+            // создаем "чужой" индекс для таблиц (сама связь происходит через него)
+            // колонка, где сохраняем id,
+            // название foreign ключа
+            // таблица, которую нужно связать
+            // колонка в другой таблицы, для связи
+            $table->foreign('category_id', 'post_category_fk')->on('categories')->references('id');
         });
     }
 

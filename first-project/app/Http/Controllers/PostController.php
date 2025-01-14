@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -16,23 +17,32 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::All();
+
+        return view('posts.create', compact('categories'));
     }
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $categories = Category::All();
+
+        return view('posts.edit', compact('post', 'categories'));
     }
     public function update(Post $post)
     {
+
         $data = request()->validate([
             // это строчка нужна для проверки ключей, которые должны совпадать с name в форме и колонками в таблицы sql
             'title' => 'string',
             'content' => 'string',
             'likes' => 'integer',
-
+            'category_id' => 'integer'
         ]);
 
+
+
         $post->update($data);
+
+        // return dd($data);
 
         return redirect()->route('post.show', $post);
     }
@@ -44,7 +54,7 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'likes' => 'integer',
-
+            'category_id' => 'integer'
         ]);
         // создаем новый объект в БД, который по ключам заполняем данными от пользователя
         Post::create($data);
@@ -57,7 +67,9 @@ class PostController extends Controller
     // где $id = тому, что пользователь напишет в строке браузера
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $category = Category::find($post->category_id);
+
+        return view('posts.show', compact('post', 'category'));
     }
 
     public function destroy(Post $post)
