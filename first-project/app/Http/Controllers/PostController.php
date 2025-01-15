@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\PostTag;
 
 class PostController extends Controller
 {
@@ -65,10 +66,19 @@ class PostController extends Controller
         $tags = $data['tag_ids'];
         unset($data['tag_ids']);
 
-        dump($data);
-        dump($tags);
         // создаем новый объект в БД, который по ключам заполняем данными от пользователя
-        // Post::create($data);
+        $post = Post::create($data);
+
+        // добавляем связь в таблицу
+        dump($post);
+        dump("----");
+        dump($tags);
+        foreach ($tags as $tag) {
+            PostTag::firstOrCreate([
+                'tag_id' => $tag,
+                'post_id' => $post->id,
+            ]);
+        }
 
         // возвращаемся на страницу с постами через название роута
         // return redirect()->route('post.index');

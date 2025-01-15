@@ -13,8 +13,6 @@ return new class extends Migration {
         Schema::create('post_tags', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-
             // создаем колонку в таблице для id категории (с ней бцдет происходит основная работа)
             $table->unsignedBigInteger('post_id')->default(0);
             $table->unsignedBigInteger('tag_id')->default(0);
