@@ -70,9 +70,7 @@ class PostController extends Controller
         $post = Post::create($data);
 
         // добавляем связь в таблицу
-        dump($post);
         dump("----");
-        dump($tags);
         foreach ($tags as $tag) {
             PostTag::firstOrCreate([
                 'tag_id' => $tag,
@@ -81,7 +79,7 @@ class PostController extends Controller
         }
 
         // возвращаемся на страницу с постами через название роута
-        // return redirect()->route('post.index');
+        return redirect()->route('post.index');
     }
 
     // $id указывается, когда в запросе есть например posts/{post},
