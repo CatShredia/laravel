@@ -70,13 +70,16 @@ class PostController extends Controller
         $post = Post::create($data);
 
         // добавляем связь в таблицу
-        dump("----");
-        foreach ($tags as $tag) {
-            PostTag::firstOrCreate([
-                'tag_id' => $tag,
-                'post_id' => $post->id,
-            ]);
-        }
+        // ! 1 variant
+        // foreach ($tags as $tag) {
+        //     PostTag::firstOrCreate([
+        //         'tag_id' => $tag,
+        //         'post_id' => $post->id,
+        //     ]);
+        // }
+
+        // ! 2 variant
+        $post->tags()->attach($tags);
 
         // возвращаемся на страницу с постами через название роута
         return redirect()->route('post.index');
