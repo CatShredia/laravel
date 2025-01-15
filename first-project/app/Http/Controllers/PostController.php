@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
+use App\Models\PostTag;
 
 class PostController extends Controller
 {
@@ -16,23 +19,34 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::All();
+        $tags = Tag::All();
+
+        return view('posts.create', compact('categories', 'tags'));
     }
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $categories = Category::All();
+        $tags = Tag::All();
+
+        return view('posts.edit', compact('post', 'categories', 'tags'));
     }
     public function update(Post $post)
     {
+
         $data = request()->validate([
             // это строчка нужна для проверки ключей, которые должны совпадать с name в форме и колонками в таблицы sql
             'title' => 'string',
             'content' => 'string',
             'likes' => 'integer',
-
+            'category_id' => 'integer'
         ]);
 
+
+
         $post->update($data);
+
+        // return dd($data);
 
         return redirect()->route('post.show', $post);
     }
@@ -44,10 +58,25 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'likes' => 'integer',
-
+            'category_id' => 'integer',
+            'tag_ids' => 'required|array',
+            'tag_ids.*' => 'integer'
         ]);
+
+        $tags = $data['tag_ids'];
+        unset($data['tag_ids']);
+
         // создаем новый объект в БД, который по ключам заполняем данными от пользователя
-        Post::create($data);
+        $post = Post::create($data);
+
+        // добавляем связь в таблицу
+        dump("----");
+        foreach ($tags as $tag) {
+            PostTag::firstOrCreate([
+                'tag_id' => $tag,
+                'post_id' => $post->id,
+            ]);
+        }
 
         // возвращаемся на страницу с постами через название роута
         return redirect()->route('post.index');
