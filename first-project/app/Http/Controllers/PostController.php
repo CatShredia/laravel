@@ -39,12 +39,17 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'likes' => 'integer',
-            'category_id' => 'integer'
+            'category_id' => 'integer',
+            'tag_ids' => 'required|array',
+            'tag_ids.*' => 'integer'
         ]);
 
-
+        $tags = $data['tag_ids'];
+        unset($data['tag_ids']);
 
         $post->update($data);
+        // добавление новых и удаление старых записей
+        $post->tags()->sync($tags);
 
         // return dd($data);
 

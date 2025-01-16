@@ -12,6 +12,7 @@
                 <div class="mb-3">
                     <label for="titleInput" class="form-label">Title</label>
                     <input name="title" type="text" class="form-control" id="titleInput" placeholder="Title">
+                    <p class="error text-danger" style="margin: 10px">This input is error</p>
                 </div>
                 <div class="mb-3">
                     <label for="titleInput" class="form-label">Content</label>
