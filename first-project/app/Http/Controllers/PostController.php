@@ -60,7 +60,8 @@ class PostController extends Controller
     {
         $data = request()->validate([
             // это строчка нужна для проверки ключей, которые должны совпадать с name в форме и колонками в таблицы sql
-            'title' => 'string',
+            // required - указываем то, что поле должно быть заполнено
+            'title' => 'required|string',
             'content' => 'string',
             'likes' => 'integer',
             'category_id' => 'integer',
