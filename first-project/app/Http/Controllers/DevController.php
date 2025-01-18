@@ -10,7 +10,7 @@ use App\Models\PostTag;
 
 class DevController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $post = Post::find(1);
 
