@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Tag;
 
 
-class CreateController extends PostController
+class CreateController extends BaseController
 {
     // что-то типо конструтора
     public function __invoke()

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 
 
-class ShowController extends PostController
+class ShowController extends BaseController
 {
     // что-то типо конструтора
     public function __invoke(Post $post)

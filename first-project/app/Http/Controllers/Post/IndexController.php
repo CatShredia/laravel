@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 
 
-class IndexController extends PostController
+class IndexController extends BaseController
 {
     // что-то типо конструтора
     public function __invoke()

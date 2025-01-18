@@ -10,7 +10,7 @@ use App\Models\Tag;
 use App\Models\Post;
 
 
-class EditController extends PostController
+class EditController extends BaseController
 {
     // что-то типо конструтора
     public function __invoke(Post $post)
