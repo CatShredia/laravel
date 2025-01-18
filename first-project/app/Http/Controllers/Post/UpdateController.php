@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Post;
 
+use App\Http\Requests\Post\UpdateRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
@@ -10,17 +11,9 @@ use App\Models\Post;
 class UpdateController extends PostController
 {
     // что-то типо конструтора
-    public function __invoke(Post $post)
+    public function __invoke(Post $post, UpdateRequest $request)
     {
-        $data = request()->validate([
-            // это строчка нужна для проверки ключей, которые должны совпадать с name в форме и колонками в таблицы sql
-            'title' => 'string',
-            'content' => 'string',
-            'likes' => 'integer',
-            'category_id' => 'integer',
-            'tag_ids' => 'required|array',
-            'tag_ids.*' => 'integer'
-        ]);
+        $data = $request->validated();
 
         $tags = $data['tag_ids'];
         unset($data['tag_ids']);

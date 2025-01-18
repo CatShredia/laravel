@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 
+use App\Http\Requests\Post\StoreRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
@@ -11,18 +12,9 @@ use App\Models\Post;
 class StoreController extends PostController
 {
     // что-то типо конструтора
-    public function __invoke(Post $post)
+    public function __invoke(Post $post, StoreRequest $request)
     {
-        $data = request()->validate([
-            // это строчка нужна для проверки ключей, которые должны совпадать с name в форме и колонками в таблицы sql
-            // required - указываем то, что поле должно быть заполнено
-            'title' => 'required|string',
-            'content' => 'string',
-            'likes' => 'integer',
-            'category_id' => 'integer',
-            'tag_ids' => 'required|array',
-            'tag_ids.*' => 'integer'
-        ]);
+        $data = $request->validated();
 
         $tags = $data['tag_ids'];
         unset($data['tag_ids']);
