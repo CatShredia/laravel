@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\Category;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // просто создает массивы
+        // $posts = Post::factory(10)->make();
+        // добавляет элементы в базу, в этом случае 10 штук
+        $category = Category::factory(5)->create();
+        $tags = Tag::factory(10)->create();
+        $posts = Post::factory(100)->create();
+
+        // foreach ($posts as $post) {
+        //     $tagsIds = $tags->random(5)->pluck('id');
+
+        //     $post->tags()->attach($tagsIds);
+        // }
 
         User::factory()->create([
             'name' => 'Test User',

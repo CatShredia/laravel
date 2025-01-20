@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    // для того, чтобы можно было использовать фабрику
     use HasFactory;
+    // для того, чтобы была мягкая очистка
     use SoftDeletes;
 
     protected $table = 'posts';
