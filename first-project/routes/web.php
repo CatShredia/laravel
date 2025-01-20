@@ -24,70 +24,7 @@ Route::get('/dev', [DevController::class, '__invoke'])->name('dev.index');
 Route::get('/about', [AboutController::class, '__invoke'])->name('about.index');
 
 
-
-// Route::group(['prefix' => 'posts', 'namespace' => 'App\Http\Controllers\Post', 'as' => 'posts.'], function () {
-
-//     // получаем страницу с постами
-//     Route::get('/posts', [IndexController::class, 'index'])->name('index');
-//     // Route::get('/post/index');
-
-//     // страница с формами, где происходит создание поста
-//     Route::get('/create', [CreateController::class, 'create'])->name('create.create');
-//     // при нажатии на кнопку с типом submit происходит обращение именно к этому запросу
-//     // где создается пост в БАЗЕ
-//     Route::post('/posts', [StoreController::class, 'store'])->name('post.store');
-
-//     // получаем страницу с ОДНИМ постом
-//     Route::get('/posts/{post}', [ShowController::class, 'show'])->name('post.show');
-
-//     // получаем страницу изменения ОДНОГО поста
-//     Route::get('/posts/{post}/edit', [EditController::class, 'edit'])->name('post.edit');
-//     // именно через этот запрос изменяется пост в БАЗЕ
-//     Route::patch('/posts/{post}', [UpdateController::class, 'update'])->name('post.update');
-
-
-//     // удаление поста
-//     Route::delete('/posts/{post}', [DeleteController::class, 'destroy'])->name('post.delete');
-// });
-
-
-
-
-// Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
-//     Route::get('/posts', 'IndexController')->name('post.index');
-//     Route::get('/posts/create', 'CreateController')->name('post.create');
-//     Route::post('/posts', 'StoreController')->name('post.store');
-//     Route::get('/posts/{post}', 'ShowController')->name('post.show');
-//     Route::get('/posts/{post}/edit', 'EditController')->name('post.edit');
-//     Route::patch('/posts/{post}', 'UpdateController')->name('post.update');
-//     Route::delete('/posts/{post}', 'DestroyController')->name('post.destroy');
-// });
-
-// Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
-
-//     // получаем страницу с постами
-//     Route::get('/posts', [IndexController::class, 'index'])->name('post.index');
-
-
-//     // страница с формами, где происходит создание поста
-//     Route::get('/create', [CreateController::class, 'create'])->name('create.create');
-//     // при нажатии на кнопку с типом submit происходит обращение именно к этому запросу
-//     // где создается пост в БАЗЕ
-//     Route::post('/posts', [StoreController::class, 'store'])->name('post.store');
-
-//     // получаем страницу с ОДНИМ постом
-//     Route::get('/posts/{post}', [ShowController::class, 'show'])->name('post.show');
-
-//     // получаем страницу изменения ОДНОГО поста
-//     Route::get('/posts/{post}/edit', [EditController::class, 'edit'])->name('post.edit');
-//     // именно через этот запрос изменяется пост в БАЗЕ
-//     Route::patch('/posts/{post}', [UpdateController::class, 'update'])->name('post.update');
-
-
-//     // удаление поста
-//     Route::delete('/posts/{post}', [DeleteController::class, 'destroy'])->name('post.delete');
-// });
-
+//  страницы связанные с постами
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 
     // получаем страницу с постами

@@ -28,7 +28,7 @@ class PostFactory extends Factory
             'image_url' => $this->faker->imageUrl(),
             // рандомим количество лайков
             'likes' => random_int(1, 10000),
-            'isPublished' => 1,
+            'isPublished' => random_int(0, 1),
             // рандомим id категорий
             'category_id' => Category::get()->random()->id
         ];
