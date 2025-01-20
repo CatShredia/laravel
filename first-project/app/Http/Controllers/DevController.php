@@ -12,16 +12,10 @@ class DevController extends Controller
 {
     public function __invoke()
     {
-        $post = Post::find(1);
+        $postsPag = Post::paginate(10);
+        $postsAll = Post::all();
 
-        // dump($post);
-
-        // dump($post->category);
-
-        dump($post->tags);
-
-        $post = Post::where('id', 1)->get();
-
-        dump($post);
+        dump($postsPag);
+        dump($postsAll);
     }
 }
