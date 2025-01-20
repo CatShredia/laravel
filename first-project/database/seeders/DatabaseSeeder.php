@@ -20,15 +20,15 @@ class DatabaseSeeder extends Seeder
         // просто создает массивы
         // $posts = Post::factory(10)->make();
         // добавляет элементы в базу, в этом случае 10 штук
-        $category = Category::factory(5)->create();
-        $tags = Tag::factory(10)->create();
+        $category = Category::factory(10)->create();
+        $tags = Tag::factory(50)->create();
         $posts = Post::factory(100)->create();
 
-        // foreach ($posts as $post) {
-        //     $tagsIds = $tags->random(5)->pluck('id');
+        foreach ($posts as $post) {
+            $tagsIds = $tags->random(5)->pluck('id');
 
-        //     $post->tags()->attach($tagsIds);
-        // }
+            $post->tags()->attach($tagsIds);
+        }
 
         User::factory()->create([
             'name' => 'Test User',
