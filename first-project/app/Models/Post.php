@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,6 +13,8 @@ class Post extends Model
     use HasFactory;
     // для того, чтобы была мягкая очистка
     use SoftDeletes;
+    // появляется метод filter из filterable - scopeFilter
+    use Filterable;
 
     protected $table = 'posts';
     // для того, чтобы свободно добавлять элементы
