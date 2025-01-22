@@ -12,8 +12,11 @@ use App\Http\Controllers\Post\EditController;
 use App\Http\Controllers\Post\UpdateController;
 use App\Http\Controllers\Post\DeleteController;
 
+use App\Http\Controllers\Admin\Post\IndexAdminController;
+
 use Illuminate\Support\Facades\Route;
 
+// ? ---ОСНОВНЫЕ страницы
 // получаем начальную страницу
 Route::get('/', [StartPageController::class, '__invoke'])->name('start.index');
 
@@ -23,8 +26,10 @@ Route::get('/dev', [DevController::class, '__invoke'])->name('dev.index');
 // получаем страницу про компанию
 Route::get('/about', [AboutController::class, '__invoke'])->name('about.index');
 
+// ? ---
 
-//  страницы связанные с постами
+
+// ? ---страницы связанные с постами
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 
     // получаем страницу с постами
@@ -49,3 +54,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     // удаление поста
     Route::delete('/posts/{post}', [DeleteController::class, '__invoke'])->name('post.delete');
 });
+
+// ? ---
+
+
+// ? ---страницы связанные с админ - панелью
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Post'], function () {
+        Route::get('/post', [IndexAdminController::class, '__invoke'])->name('admin.post.index');
+    });
+});
+// ? ---
