@@ -9,3 +9,7 @@ cs/testProject/testProject.csproj
 OAIP.sln
 catshredia-repository.sln
 .vscode/launch.json
+
+.vscode/easycode.ignore
+first-project
+
