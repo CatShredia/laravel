@@ -29,10 +29,5 @@ class DatabaseSeeder extends Seeder
 
             $post->tags()->attach($tagsIds);
         }
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
     }
 }

@@ -14,11 +14,14 @@ use App\Http\Controllers\Post\DeleteController;
 
 use App\Http\Controllers\Admin\Post\IndexAdminController;
 
+use App\Http\Controllers\HomeController;
+
 use Illuminate\Support\Facades\Route;
 
 // ? ---ОСНОВНЫЕ страницы
 // получаем начальную страницу
-Route::get('/', [StartPageController::class, '__invoke'])->name('start.index');
+// Route::get('/', [StartPageController::class, '__invoke'])->name('start.index');
+Route::get('/', [HomeController::class, 'index'])->name('start.index');
 
 // получаем страницу разработчика
 Route::get('/dev', [DevController::class, '__invoke'])->name('dev.index');
@@ -66,3 +69,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
     });
 });
 // ? ---
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
