@@ -62,7 +62,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 
 
 // ? ---страницы связанные с админ - панелью
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Post'], function () {
         Route::get('/post', [IndexAdminController::class, '__invoke'])->name('admin.post.index');
