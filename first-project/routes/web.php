@@ -21,7 +21,10 @@ use Illuminate\Support\Facades\Route;
 // ? ---ОСНОВНЫЕ страницы
 // получаем начальную страницу
 // Route::get('/', [StartPageController::class, '__invoke'])->name('start.index');
-Route::get('/', [HomeController::class, 'index'])->name('start.index');
+Route::get('/', [StartPageController::class, '__invoke'])->name('start.index');
+
+// Получаем страницы входа в аккаунты
+Route::get('/account', [HomeController::class, 'index'])->name('account.index');
 
 // получаем страницу разработчика
 Route::get('/dev', [DevController::class, '__invoke'])->name('dev.index');
@@ -57,7 +60,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     // удаление поста
     Route::delete('/posts/{post}', [DeleteController::class, '__invoke'])->name('post.delete');
 });
-
 // ? ---
 
 
