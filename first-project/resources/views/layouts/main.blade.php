@@ -40,11 +40,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('post.index') }}">Post</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('post.index') }}">Admin</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.post.index') }}">Account</a>
+                                @can('view', auth()->user())
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin.post.index') }}">Admin</a>
+                                    </li>
+                                @endcan
+                                <li class="nav-item" style="border:1px solid black; margin-left: 50px;">
+                                    {{-- <a class="nav-link" href="{{ route('home') }}">{{ auth()->user()->name }}</a> --}}
+                                    <a class="nav-link" href="{{ route('home') }}">Account</a>
                                 </li>
                             </ul>
                         </div>
