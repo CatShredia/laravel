@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Route;
 // ? База
 Route::get('/', [WelcomeController::class, 'index']);
 
-Route::get('/venicles', [VenicleController::class, 'index'])->name('venicles');
+Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/venicles', [VenicleController::class, 'index'])->name('venicles');
+});
 // ? ---
 
 // ? Авторизация Breeze

@@ -6,6 +6,9 @@
         <div class="create-button-div">
             <a href="#">Create Venicle</a>
         </div>
+        <div class="show-count">
+            <p>{{ count($count) }} - count of venicles</p>
+        </div>
     </div>
     <div class="row">
         <div class="col">
@@ -51,7 +54,11 @@
                     </div>
                 @endforeach
             </div>
-
+            <div class="row">
+                <div class="mt-6">
+                    {{ $venicles }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
