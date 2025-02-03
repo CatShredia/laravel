@@ -12,7 +12,9 @@ class VenicleController extends Controller
      */
     public function index()
     {
-        //
+        $venicles = Venicle::all();
+
+        return view('venicles', compact('venicles'));
     }
 
     /**

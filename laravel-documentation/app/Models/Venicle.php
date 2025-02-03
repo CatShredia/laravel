@@ -9,4 +9,17 @@ class Venicle extends Model
 {
     /** @use HasFactory<\Database\Factories\VenicleFactory> */
     use HasFactory;
+
+    /**
+     * @var array
+     */
+
+    // массив, содержащий поля, которые могут массово присваиваться
+    protected $fullable = [
+        'model',
+        'year',
+        'price',
+        'description',
+        'image',
+    ];
 }
