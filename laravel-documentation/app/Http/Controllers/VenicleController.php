@@ -12,9 +12,10 @@ class VenicleController extends Controller
      */
     public function index()
     {
-        $venicles = Venicle::all();
+        $venicles = Venicle::latest()->paginate(3);
+        $count = Venicle::all();
 
-        return view('venicles', compact('venicles'));
+        return view('venicles', compact('venicles', 'count'));
     }
 
     /**
