@@ -13,11 +13,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'name' => env('APP_NAME', 'CatShredia'),
-=======
-    'name' => env('APP_NAME', 'Laravel'),
->>>>>>> a768f1096c5a29a325bf2b5fad72b7b971ed29fd
 
     /*
     |--------------------------------------------------------------------------
@@ -30,11 +26,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'env' => env('APP_ENV', 'doc'),
-=======
-    'env' => env('APP_ENV', 'production'),
->>>>>>> a768f1096c5a29a325bf2b5fad72b7b971ed29fd
 
     /*
     |--------------------------------------------------------------------------
@@ -131,8 +123,4 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-<<<<<<< HEAD
 ];
-=======
-];
->>>>>>> a768f1096c5a29a325bf2b5fad72b7b971ed29fd
