@@ -15,6 +15,8 @@ class TodoList extends Component
     #[Rule('required')]
     public $name;
     public $search = '';
+
+    public $completed;
     public function render()
     {
         $todos = Todo::where('name', 'like', "%{$this->search}%")->paginate(5);
@@ -35,5 +37,27 @@ class TodoList extends Component
         $this->reset('name');
 
         session()->flash('success', 'Todo was created');
+    }
+    public function deleteTodo($id)
+    {
+        $deleted = Todo::destroy($id);
+
+        if ($deleted) {
+            $lastDeletedTodo = Todo::onlyTrashed()
+                ->orderBy('deleted_at', 'desc')
+                ->first();
+
+            session()->flash('success', "Todo ({$lastDeletedTodo->name}) for number {$lastDeletedTodo->id} deleted successfully!");
+        } else {
+            session()->flash('error', 'Todo not found!');
+        }
+    }
+
+    public function changeCompleted(Todo $todo)
+    {
+        $todo = Todo::find($todo->id);
+
+        $todo->completed = !$todo->completed;
+        $todo->save();
     }
 }
