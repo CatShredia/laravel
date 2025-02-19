@@ -5,11 +5,13 @@ namespace App\Livewire;
 use App\Models\User;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
+use Livewire\WithPagination; // Импортируем Hash facade
 
 class Clicker extends Component
 {
 
-    // нежелательно оставлять тут конфиденциальные данные
+    use WithPagination;
 
     #[Rule('required|min:2|max:50')]
     public $name;
@@ -22,20 +24,28 @@ class Clicker extends Component
 
     public function render()
     {
-        $users = User::All();
+        $users = User::paginate(5);
         return view('livewire.clicker', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
 
     public function createNewUser()
     {
-        $this->validate();
+        // Валидируем все поля
+        $validatedData = $this->validate();
+
+        // Хешируем пароль
+        $hashedPassword = Hash::make($this->password);
 
         User::create([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => $this->password
+            'password' => $hashedPassword,
         ]);
+
+        $this->reset('name', 'email', 'password');
+
+        session()->flash('success', 'User created successfully!');
     }
 }

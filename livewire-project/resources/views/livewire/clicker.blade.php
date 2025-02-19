@@ -1,6 +1,23 @@
 <div>
     <form action="" style="display: flex; flex-direction: column; gap: 10px;" wire:submit='createNewUser'>
         @csrf
+
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <label for="name" class="form-label">Name:</label>
         <input wire:model="name" type="text" name="name" id="name" placeholder="name">
         @error('name')
@@ -25,6 +42,8 @@
             @foreach ($users as $user)
                 <p>Name: {{ $user->name }}</p>
             @endforeach
-            </div>
+
+            {{ $users->links() }}
         </div>
     </div>
+</div>
