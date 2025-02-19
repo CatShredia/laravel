@@ -8,25 +8,25 @@ use Livewire\Component;
 class Clicker extends Component
 {
 
-    // публичные поля становятся сразу доступными
-    public $constant = "GVKvgjhgvkkh";
+    // нежелательно оставлять тут конфиденциальные данные
+    public $name;
+    public $email;
+    public $password;
+
+    public function render()
+    {
+        $users = User::All();
+        return view('livewire.clicker', [
+            'users' => $users
+        ]);
+    }
 
     public function createNewUser()
     {
         User::create([
-            "name" => "test",
-            "email" => "test@gmail.com",
-            "password" => bcrypt("12345678"),
-        ]);
-    }
-    public function render()
-    {
-        $title = "hi";
-        $users = User::all();
-
-        return view('livewire.clicker', [
-            'title' => $title,
-            'users' => $users
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password
         ]);
     }
 }

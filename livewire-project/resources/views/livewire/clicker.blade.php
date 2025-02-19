@@ -1,13 +1,20 @@
 <div>
-    <p>Hello World!</p>
-    <p>{{ $constant }}</p>
-    <p>{{ $title }}</p>
-    @foreach ($users as $user)
-        <p>{{ $user->name }}</p>
-    @endforeach
+    <form action="" style="display: flex; flex-direction: column; gap: 10px;" wire:submit='createNewUser'>
+        <label for="name" class="form-label">Name:</label>
+        <input wire:model="name" type="text" name="name" id="name" placeholder="name">
+        <label for="email" class="form-label">Email:</label>
+        <input wire:model="email" type="text" name="email" id="email" placeholder="email">
+        <label for="password" class="form-label">Password:</label>
+        <input wire:model="password" type="password" name="password" id="password" placeholder="password">
 
-    <button wire:click='createNewUser'
-        style="display: flex; flex-direction: column; align-items: center;justify-content: center;">
-        Create New User!
-    </button>
+        <button type="sumbit" class="form-button">Create</button>
+    </form>
+
+    <div class="container">
+        <div class="user__inner">
+            @foreach ($users as $user)
+                <p>Name: {{ $user->name }}</p>
+            @endforeach
+        </div>
+    </div>
 </div>
