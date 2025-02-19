@@ -39,13 +39,19 @@
         @include('livewire.includes.search')
 
         <div id="todos-list">
-            @foreach ($todos as $todo)
-                @include('livewire.includes.todo-card')
-            @endforeach
+            @if ($hasTodos)
+                @foreach ($todos as $todo)
+                    @include('livewire.includes.todo-card')
+                @endforeach
+                <div class="my-2">
+                    {{ $todos->links() }}
+                </div>
+            @else
+                <p class="error">Todo Not Found</p>
+            @endif
 
-            <div class="my-2">
-                {{ $todos->links() }}
-            </div>
+
+
         </div>
     </div>
 </div>

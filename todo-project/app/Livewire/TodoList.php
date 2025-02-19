@@ -17,9 +17,13 @@ class TodoList extends Component
     public $search = '';
     public function render()
     {
-        $todos = Todo::paginate(5);
+        $todos = Todo::where('name', 'like', "%{$this->search}%")->paginate(5);
+        $hasTodos = $todos->isNotEmpty();
+        if (!$hasTodos) {
+            session()->flash('notfound', 'Search don\'t found anything');
+        }
 
-        return view('livewire.todo-list', compact('todos'));
+        return view('livewire.todo-list', compact('todos', 'hasTodos'));
     }
 
     public function createTodo()
@@ -28,7 +32,7 @@ class TodoList extends Component
 
         Todo::create($nameValidated);
 
-        $this->reset();
+        $this->reset('name');
 
         session()->flash('success', 'Todo was created');
     }
