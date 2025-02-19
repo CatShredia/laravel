@@ -1,15 +1,5 @@
-cs/OAIP/bin
-cs/OAIP/obj
-cs/OAIP/OAIP.csproj
+node_modules
+.prettierrc
 
-cs/testProject/bin
-cs/testProject/obj
-cs/testProject/testProject.csproj
-
-OAIP.sln
-catshredia-repository.sln
-.vscode/launch.json
-
-.vscode/easycode.ignore
-first-project
-
+package.json
+package-lock.json
