@@ -1,15 +1,10 @@
-cs/OAIP/bin
-cs/OAIP/obj
-cs/OAIP/OAIP.csproj
+gpt
 
-cs/testProject/bin
-cs/testProject/obj
-cs/testProject/testProject.csproj
+livewire-project
 
-OAIP.sln
-catshredia-repository.sln
-.vscode/launch.json
+node_modules
 
-.vscode/easycode.ignore
-first-project
+.prettierrc
 
+package-lock.json
+package.json
