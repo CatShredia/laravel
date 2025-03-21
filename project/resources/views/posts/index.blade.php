@@ -1,1 +1,5 @@
-Hello Blog!
+@extends('layouts.default')
+
+@section('content')
+
+@endsection
