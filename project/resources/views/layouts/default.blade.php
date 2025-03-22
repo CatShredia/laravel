@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Project</title>
-    <link rel="stylesheet" href="{{ asset('vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/aos/aos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <script src="{{ asset('vendors/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/loader.js') }}"></script>
+
+    @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js'])
+
 </head>
 
 <body>
@@ -19,7 +16,7 @@
     <header class="edica-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Edica"></a>
+                <a class="navbar-brand" href="index.html"><img src="{{ asset('storage/logo.svg') }}" alt="Edica"></a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                     data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -74,7 +71,7 @@
                 <div class="row">
                     <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
                         <div class="blog-post-thumbnail-wrapper">
-                            <img src="assets/images/blog_1.jpg" alt="blog post">
+                            <img src="{{ asset('storage/blog_1.jpg') }}" alt="blog post">
                         </div>
                         <p class="blog-post-category">Blog post</p>
                         <a href="#!" class="blog-post-permalink">
@@ -83,7 +80,7 @@
                     </div>
                     <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
                         <div class="blog-post-thumbnail-wrapper">
-                            <img src="assets/images/blog_2.jpg" alt="blog post">
+                            <img src="{{ asset('storage/blog_2.jpg') }}" alt="blog post">
                         </div>
                         <p class="blog-post-category">Blog post</p>
                         <a href="#" class="blog-post-permalink">
@@ -92,7 +89,7 @@
                     </div>
                     <div class="col-md-4 fetured-post blog-post" data-aos="fade-left">
                         <div class="blog-post-thumbnail-wrapper">
-                            <img src="assets/images/blog_3.jpg" alt="blog post">
+                            <img src="{{ asset('storage/blog_3.jpg') }}" alt="blog post">
                         </div>
                         <p class="blog-post-category">Blog post</p>
                         <a href="#" class="blog-post-permalink">
@@ -107,7 +104,7 @@
                         <div class="row blog-post-row">
                             <div class="col-md-6 blog-post" data-aos="fade-up">
                                 <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_4.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_4.jpg') }}" alt="blog post">
                                 </div>
                                 <p class="blog-post-category">Blog post</p>
                                 <a href="#!" class="blog-post-permalink">
@@ -117,29 +114,7 @@
                             </div>
                             <div class="col-md-6 blog-post" data-aos="fade-up">
                                 <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_5.jpg" alt="blog post">
-                                </div>
-                                <p class="blog-post-category">Blog post</p>
-                                <a href="#!" class="blog-post-permalink">
-                                    <h6 class="blog-post-title">Front becomes an official Instagram Marketing Partner
-                                    </h6>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row blog-post-row">
-                            <div class="col-md-6 blog-post" data-aos="fade-up">
-                                <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_6.jpg" alt="blog post">
-                                </div>
-                                <p class="blog-post-category">Blog post</p>
-                                <a href="#!" class="blog-post-permalink">
-                                    <h6 class="blog-post-title">Front becomes an official Instagram Marketing Partner
-                                    </h6>
-                                </a>
-                            </div>
-                            <div class="col-md-6 blog-post" data-aos="fade-up">
-                                <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_7.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_5.jpg') }}" alt="blog post">
                                 </div>
                                 <p class="blog-post-category">Blog post</p>
                                 <a href="#!" class="blog-post-permalink">
@@ -151,7 +126,7 @@
                         <div class="row blog-post-row">
                             <div class="col-md-6 blog-post" data-aos="fade-up">
                                 <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_8.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_6.jpg') }}" alt="blog post">
                                 </div>
                                 <p class="blog-post-category">Blog post</p>
                                 <a href="#!" class="blog-post-permalink">
@@ -161,7 +136,7 @@
                             </div>
                             <div class="col-md-6 blog-post" data-aos="fade-up">
                                 <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_9.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_7.jpg') }}" alt="blog post">
                                 </div>
                                 <p class="blog-post-category">Blog post</p>
                                 <a href="#!" class="blog-post-permalink">
@@ -173,7 +148,7 @@
                         <div class="row blog-post-row">
                             <div class="col-md-6 blog-post" data-aos="fade-up">
                                 <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_10.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_8.jpg') }}" alt="blog post">
                                 </div>
                                 <p class="blog-post-category">Blog post</p>
                                 <a href="#!" class="blog-post-permalink">
@@ -183,7 +158,29 @@
                             </div>
                             <div class="col-md-6 blog-post" data-aos="fade-up">
                                 <div class="blog-post-thumbnail-wrapper">
-                                    <img src="assets/images/blog_11.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_9.jpg') }}" alt="blog post">
+                                </div>
+                                <p class="blog-post-category">Blog post</p>
+                                <a href="#!" class="blog-post-permalink">
+                                    <h6 class="blog-post-title">Front becomes an official Instagram Marketing Partner
+                                    </h6>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row blog-post-row">
+                            <div class="col-md-6 blog-post" data-aos="fade-up">
+                                <div class="blog-post-thumbnail-wrapper">
+                                    <img src="{{ asset('storage/blog_10.jpg') }}" alt="blog post">
+                                </div>
+                                <p class="blog-post-category">Blog post</p>
+                                <a href="#!" class="blog-post-permalink">
+                                    <h6 class="blog-post-title">Front becomes an official Instagram Marketing Partner
+                                    </h6>
+                                </a>
+                            </div>
+                            <div class="col-md-6 blog-post" data-aos="fade-up">
+                                <div class="blog-post-thumbnail-wrapper">
+                                    <img src="{{ asset('storage/blog_11.jpg') }}" alt="blog post">
                                 </div>
                                 <p class="blog-post-category">Blog post</p>
                                 <a href="#!" class="blog-post-permalink">
@@ -206,19 +203,19 @@
                                 </ol>
                                 <div class="carousel-inner" role="listbox">
                                     <figure class="carousel-item active">
-                                        <img src="assets/images/blog_widget_carousel.jpg" alt="First slide">
+                                        <img src="{{ asset('storage/blog_widget_carousel.jpg') }}" alt="First slide">
                                         <figcaption class="post-title">
                                             <a href="#!">Front becomes an official Instagram Marketing Partner</a>
                                         </figcaption>
                                     </figure>
                                     <figure class="carousel-item">
-                                        <img src="assets/images/blog_7.jpg" alt="First slide">
+                                        <img src="{{ asset('storage/blog_7.jpg') }}" alt="First slide">
                                         <figcaption class="post-title">
                                             <a href="#!">Front becomes an official Instagram Marketing Partner</a>
                                         </figcaption>
                                     </figure>
                                     <div class="carousel-item">
-                                        <img src="assets/images/blog_5.jpg" alt="First slide">
+                                        <img src="{{ asset('storage/blog_5.jpg') }}" alt="First slide">
                                         <figcaption class="post-title">
                                             <a href="#!">Front becomes an official Instagram Marketing Partner</a>
                                         </figcaption>
@@ -232,7 +229,7 @@
                         <ul class="post-list">
                             <li class="post">
                                 <a href="#!" class="post-permalink media">
-                                    <img src="assets/images/blog_widget_1.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_widget_1.jpg') }}" alt="blog post">
                                     <div class="media-body">
                                         <h6 class="post-title">Front becomes an official Instagram Marketing Partner
                                         </h6>
@@ -241,7 +238,7 @@
                             </li>
                             <li class="post">
                                 <a href="#!" class="post-permalink media">
-                                    <img src="assets/images/blog_widget_2.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_widget_2.jpg') }}" alt="blog post">
                                     <div class="media-body">
                                         <h6 class="post-title">Front becomes an official Instagram Marketing Partner
                                         </h6>
@@ -250,7 +247,7 @@
                             </li>
                             <li class="post">
                                 <a href="#!" class="post-permalink media">
-                                    <img src="assets/images/blog_widget_3.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_widget_3.jpg') }}" alt="blog post">
                                     <div class="media-body">
                                         <h6 class="post-title">Front becomes an official Instagram Marketing Partner
                                         </h6>
@@ -259,7 +256,7 @@
                             </li>
                             <li class="post">
                                 <a href="#!" class="post-permalink media">
-                                    <img src="assets/images/blog_widget_4.jpg" alt="blog post">
+                                    <img src="{{ asset('storage/blog_widget_4.jpg') }}" alt="blog post">
                                     <div class="media-body">
                                         <h6 class="post-title">Front becomes an official Instagram Marketing Partner
                                         </h6>
@@ -270,7 +267,7 @@
                     </div>
                     <div class="widget">
                         <h5 class="widget-title">Categories</h5>
-                        <img src="assets/images/blog_widget_categories.jpg" alt="categories" class="w-100">
+                        <img src="{{ asset('storage/blog_widget_categories.jpg') }}" alt="categories" class="w-100">
                     </div>
                 </div>
             </div>
@@ -283,9 +280,11 @@
             <div class="footer-banner" data-aos="fade-up">
                 <h1 class="banner-title">Download it now.</h1>
                 <div class="banner-btns-wrapper">
-                    <button class="btn btn-success"> <img src="assets/images/apple@1x.svg" alt="ios" class="mr-2"> App
+                    <button class="btn btn-success"> <img src="{{ asset('storage/apple@1x.svg') }}" alt="ios"
+                            class="mr-2"> App
                         Store</button>
-                    <button class="btn btn-success"> <img src="assets/images/android@1x.svg" alt="android" class="mr-2">
+                    <button class="btn btn-success"> <img src="{{ asset('storage/android@1x.svg') }}" alt="android"
+                            class="mr-2">
                         Google Play</button>
                 </div>
                 <p class="banner-text">Add some helper text here to explain the finer details of your <br> product or
@@ -298,7 +297,7 @@
             <div class="row footer-widget-area">
                 <div class="col-md-3">
                     <a href="index.html" class="footer-brand-wrapper">
-                        <img src="assets/images/logo.svg" alt="edica logo">
+                        <img src="{{ asset('storage/logo.svg') }}" alt="edica logo">
                     </a>
                     <p class="contact-details">hello@edica.com</p>
                     <p class="contact-details">+23 3000 000 00</p>
@@ -358,16 +357,6 @@
             </div>
         </div>
     </footer>
-    <script src="https://kit.fontawesome.com/e68ac37ccf.js" crossorigin="anonymous"></script>
-    <script src="assets/vendors/popper.js/popper.min.js"></script>
-    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/vendors/aos/aos.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000
-        });
-    </script>
 </body>
 
 </html>
