@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
 
+            // создаем post_category_idx в posts, беря его из categories
             $table->index(['category_id', 'post_category_idx']);
+            // обозначаем его, как внешний ключ (1:M)
             $table->foreign('category_id', 'post_category_fk')->on('categories')->references('id');
         });
     }
