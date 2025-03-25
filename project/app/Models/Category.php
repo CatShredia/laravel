@@ -11,4 +11,10 @@ class Category extends Model
 
     protected $table = 'categories';
     protected $guarded = false;
+
+    // у категории много постов
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

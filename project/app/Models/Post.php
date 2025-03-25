@@ -12,4 +12,15 @@ class Post extends Model
     protected $table = 'posts';
     protected $guarded = false;
 
+    // у поста одна категория
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    // у поста много тегов
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
+    }
 }
