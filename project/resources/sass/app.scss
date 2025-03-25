@@ -10,3 +10,7 @@
 @import 'components/_about';
 @import 'components/_blog';
 @import 'components/_utilities';
+
+@import 'node_modules/glob-parent/index.js';
+
+@import "../plugins/**/*.css";

@@ -6,11 +6,18 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/sass/app.scss",
-                "resources/assets/style.css",
-                "resources/assets/style.css.map",
+                "resources/css/app.css",
                 "resources/js/app.js",
+
+                "resources/css/admin/adminlte.css",
+                "resources/js/admin/adminlte.js",
             ],
             refresh: true,
         }),
     ],
+    build: {
+        rollupOptions: {
+            external: ["resources/plugins/flot/jquery.flot.js"],
+        },
+    },
 });
