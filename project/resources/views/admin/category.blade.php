@@ -43,14 +43,19 @@
                     </div>
 
                     <div class="col-md-12">
-                        @foreach ($category as $categories)
-                            <div class="card category" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $category->title }}</h5>
-                                    <a href="#" class="btn btn-primary">Edit</a>
+                        <div class="row" style="justify-content: center">
+                            @foreach ($categories as $category)
+                                <div class="col-md-4">
+                                    <div class="card category" style="width: 100%;">
+                                        <div class="card-body"
+                                            style="display: flex; flex-direction: column;gap:10px; text-align: center">
+                                            <h5 class="card-title">{{ $category->title }}</h5>
+                                            <a href="#" class="btn btn-primary">Edit</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </section>

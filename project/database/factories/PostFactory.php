@@ -17,7 +17,9 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->word(),
+            'content' => $this->faker->sentence(),
+            'category_id' => random_int(1, 10),
         ];
     }
 }

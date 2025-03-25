@@ -40,7 +40,7 @@
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Categories
-                            <span class="badge badge-info right">2</span>
+                            <span class="badge badge-info right">{{ count($categories) }}</span>
                         </p>
                     </a>
                 </li>
@@ -49,6 +49,7 @@
                         <i class="nav-icon fas fa-file"></i>
                         <p>
                             Tags
+                            <span class="badge badge-info right">{{ count($tags) }}</span>
                         </p>
                     </a>
                 </li>

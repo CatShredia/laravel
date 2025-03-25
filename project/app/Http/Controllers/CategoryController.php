@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -18,7 +19,9 @@ class CategoryController extends Controller
     public function adminIndex()
     {
         $categories = Category::all();
-        return view('admin.category', compact('categories'));
+        $tags = Tag::all();
+
+        return view('admin.category', compact('categories', 'tags'));
     }
 
     /**
