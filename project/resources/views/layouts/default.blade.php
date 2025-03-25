@@ -8,7 +8,17 @@
     <title>Project</title>
 
     @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js'])
-
+    <script>
+        window.onload = function () {
+            setTimeout(() => {
+                if (window.$) {
+                    console.log("jQuery (через $ ) существует!");
+                } else {
+                    console.error("С jQuery что-то не так!");
+                }
+            }, 500); // Задержка 500 мс (настройте при необходимости)
+        };
+    </script>
 </head>
 
 <body>
