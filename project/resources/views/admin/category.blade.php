@@ -25,12 +25,13 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form>
+                            {{-- ! форма получения категории --}}
+                            <form method="POST" action="{{ route('admin.category.store') }}">
+                                @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Title</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            placeholder="Enter email">
+                                        <input name="title" type="text" class="form-control" placeholder="Enter title">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -51,6 +52,8 @@
                                             style="display: flex; flex-direction: column;gap:10px; text-align: center">
                                             <h5 class="card-title">{{ $category->title }}</h5>
                                             <a href="#" class="btn btn-primary">Edit</a>
+                                            <a href="#" class="btn btn-primary"
+                                                style="background-color: red; border:  1px solid red;">Delete</a>
                                         </div>
                                     </div>
                                 </div>

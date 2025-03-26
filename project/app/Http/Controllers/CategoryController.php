@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\Tag;
+
+use App\Services\CategoryService;
+
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    protected $service; // Объявляем свойство $service
+
+    public function __construct(CategoryService $service) // Внедряем сервис
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         //
@@ -27,9 +39,13 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(CategoryRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $this->service->store($data);
+
+        return redirect()->route('admin.category')->with('success', 'Категория успешно создана.');
     }
 
     /**

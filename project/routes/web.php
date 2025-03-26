@@ -13,5 +13,9 @@ Route::get('/test', [TestController::class, 'index'])->name('test');
 Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('/', [AdminIndexController::class, 'redirect']);
     Route::get('/index', [AdminIndexController::class, 'index'])->name('admin.index');
-    Route::get('/category', [CategoryController::class, 'adminIndex'])->name('admin.category');
+
+    Route::group(['prefix' => 'category'], function () {
+        Route::get('/', [CategoryController::class, 'adminIndex'])->name('admin.category');
+        Route::post('/store', [CategoryController::class, 'create'])->name('admin.category.store');
+    });
 });
