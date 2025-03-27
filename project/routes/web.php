@@ -17,5 +17,6 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin'], function () {
     Route::group(['prefix' => 'category'], function () {
         Route::get('/', [CategoryController::class, 'adminIndex'])->name('admin.category');
         Route::post('/store', [CategoryController::class, 'create'])->name('admin.category.store');
+        Route::delete('/delete/{category}', [CategoryController::class, 'delete'])->name('admin.category.delete');
     });
 });
