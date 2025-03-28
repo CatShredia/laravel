@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Category as CategoryModel;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 
 use Livewire\Attributes\Rule;
@@ -13,6 +13,9 @@ class Category extends Component
 {
     #[Rule('required')]
     public $title;
+
+    public $editingId;
+    public $editingTitle;
 
     public function render()
     {
@@ -35,15 +38,27 @@ class Category extends Component
     public function DeleteCategory($id)
     {
         $deleted = CategoryModel::destroy($id);
+    }
 
-        if ($deleted) {
-            $lastDeletedTodo = CategoryModel::onlyTrashed()
-                ->orderBy('deleted_at', 'desc')
-                ->first();
+    public function SetEditingId($id)
+    {
+        $this->editingId = $id;
+    }
 
-            session()->flash('success', "Category ({$lastDeletedTodo->name}) for number {$lastDeletedTodo->id} deleted successfully!");
-        } else {
-            session()->flash('error', 'Category not found!');
-        }
+    public function SetNullEditingId()
+    {
+        $this->editingId = null;
+    }
+
+    public function UpdateCategory($id)
+    {
+        $this->validateOnly('editingTitle');
+        $category = CategoryModel::findOrFail($id);
+        $category->update([
+            'title' => $this->editingTitle,
+        ]);
+        $this->SetNullEditingId();
+
+        $this->reset('editingTitle');
     }
 }

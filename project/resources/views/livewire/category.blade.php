@@ -44,9 +44,27 @@
                                     <div class="card-body"
                                         style="display: flex; flex-direction: column;gap:10px; text-align: center">
                                         <h5 class="card-title">{{ $category->title }}</h5>
-                                        {{-- <textarea name="title" id="title"
-                                            style="height: 50px; text-align: center;"></textarea> --}}
-                                        <button type="button" href="#" class="btn btn-primary">Edit</button>
+
+                                        @if ($editingId == $category->id)
+                                            <form id="form" wire:key='category->id'
+                                                style="display: flex; flex-direction: column; gap: 10px;">
+                                                <input name="title" id="title" type="text" wire:model="editingTitle"
+                                                    style="height: 50px; text-align: center;"></input>
+
+                                                <button type="button" href="#" class="btn btn-primary"
+                                                    style="background-color: rgb(0, 255, 0); border:  1px solid rgb(0, 255, 0); color: black;"
+                                                    wire:click='UpdateCategory({{ $category->id }})'>OK</button>
+                                                <button type="button" href="#" class="btn btn-primary"
+                                                    wire:click='SetNullEditingId'>Cancel</button>
+                                            </form>
+
+
+                                        @else
+                                            <button type="button" href="#" class="btn btn-primary"
+                                                wire:click='SetEditingId({{ $category->id }})'>Edit</button>
+                                        @endif
+
+
                                         <form method="POST" wire:submit='DeleteCategory({{ $category->id }})'>
                                             @csrf
                                             <button type="submit" href="" class="btn btn-primary"
