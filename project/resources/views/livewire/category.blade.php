@@ -24,13 +24,13 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         {{-- ! форма получения категории --}}
-                        <form method="POST" action="{{ route('admin.category.store') }}">
+                        <form method="POST" wire:submit='CreateCategory'>
                             @csrf
-                            @method('post')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
-                                    <input name="title" type="text" class="form-control" placeholder="Enter title">
+                                    <input name="title" type="text" class="form-control" placeholder="Enter title"
+                                        wire:model='title'>
                                 </div>
                             </div>
                             <!-- /.card-body -->
