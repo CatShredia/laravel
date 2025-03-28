@@ -30,10 +30,7 @@ class CategoryController extends Controller
 
     public function adminIndex()
     {
-        $categories = Category::all();
-        $tags = Tag::all();
-
-        return view('admin.category', compact('categories', 'tags'));
+        return view('admin.category');
     }
 
     /**
