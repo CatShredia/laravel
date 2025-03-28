@@ -44,10 +44,11 @@
                                     <div class="card-body"
                                         style="display: flex; flex-direction: column;gap:10px; text-align: center">
                                         <h5 class="card-title">{{ $category->title }}</h5>
+                                        {{-- <textarea name="title" id="title"
+                                            style="height: 50px; text-align: center;"></textarea> --}}
                                         <button type="button" href="#" class="btn btn-primary">Edit</button>
-                                        <form method="POST" action="{{ route('admin.category.delete', $category->id) }}">
+                                        <form method="POST" wire:submit='DeleteCategory({{ $category->id }})'>
                                             @csrf
-                                            @method('delete')
                                             <button type="submit" href="" class="btn btn-primary"
                                                 style="background-color: red; border:  1px solid red;">Delete</button>
                                         </form>

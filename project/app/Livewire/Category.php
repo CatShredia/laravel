@@ -31,4 +31,19 @@ class Category extends Component
 
         session()->flash('success', 'Category was created!');
     }
+
+    public function DeleteCategory($id)
+    {
+        $deleted = CategoryModel::destroy($id);
+
+        if ($deleted) {
+            $lastDeletedTodo = CategoryModel::onlyTrashed()
+                ->orderBy('deleted_at', 'desc')
+                ->first();
+
+            session()->flash('success', "Category ({$lastDeletedTodo->name}) for number {$lastDeletedTodo->id} deleted successfully!");
+        } else {
+            session()->flash('error', 'Category not found!');
+        }
+    }
 }

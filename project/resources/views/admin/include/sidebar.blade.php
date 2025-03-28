@@ -39,7 +39,6 @@
                     <i class="nav-icon fas fa-book"></i>
                     <p>
                         Categories
-                        @livewire('count-category')
                     </p>
                 </a>
             </li>
