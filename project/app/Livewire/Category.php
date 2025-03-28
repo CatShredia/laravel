@@ -4,6 +4,9 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Category as CategoryModel;
+
+use Illuminate\Support\Facades\Cache;
+
 use Livewire\Attributes\Rule;
 
 class Category extends Component
@@ -20,9 +23,9 @@ class Category extends Component
 
     public function CreateCategory()
     {
-        $nameValidated = $this->validateOnly('title');
+        $titleValidated = $this->validateOnly('title');
 
-        CategoryModel::create($nameValidated);
+        CategoryModel::create($titleValidated);
 
         $this->reset('title');
 

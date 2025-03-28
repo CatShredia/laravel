@@ -1,0 +1,1 @@
+<span class="badge badge-info right">{{ $count }}</span>
