@@ -1,22 +1,26 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="container" style="padding: 10px">
+    <div class="container py-4">
         <div class="row">
-
-            @foreach ($posts as $post)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $post->title }}</h5>
-                            <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
-                            <!-- Limit the content for brevity -->
-                            <a href="#" class="btn btn-primary">Read More</a>
+            <div class="col-md-8 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>{{ $post->title }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ $post->content }}</p>
+                        <div class="text-muted small mt-4">
+                            <span class="mr-3">Category ID: {{ $post->category_id }}</span>
+                            <span>Created: {{ $post->created_at->format('d.m.Y H:i') }}</span>
                         </div>
                     </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a href="{{ route('post.edit', $post->id) }}" class="btn btn-outline-primary">Edit</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">Back</a>
+                    </div>
                 </div>
-            @endforeach
-
+            </div>
         </div>
     </div>
 @endsection

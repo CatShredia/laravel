@@ -9,7 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        return view("posts.show", compact('posts'));
+        return redirect(route("post.index"));
     }
 }
